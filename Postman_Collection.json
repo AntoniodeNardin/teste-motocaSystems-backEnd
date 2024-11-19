@@ -1,0 +1,348 @@
+
+{
+    "collection": {
+      "info": {
+        "_postman_id": "48f9942c-5726-4f14-8cb7-d66942703d89",
+        "name": "Teste API Produtos e Categorias",
+        "description": "Collection para testar a API de Produtos e Categorias.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "updatedAt": "2024-11-19T20:55:55.000Z",
+        "createdAt": "2024-11-19T20:13:50.000Z",
+        "lastUpdatedBy": "20650708",
+        "uid": "20650708-48f9942c-5726-4f14-8cb7-d66942703d89"
+      },
+      "item": [
+        {
+          "name": "Criar Categoria",
+          "id": "01d01d4e-25b7-4a53-9f54-d03e92460182",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Tecnologia\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/categorias",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "categorias"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-01d01d4e-25b7-4a53-9f54-d03e92460182"
+        },
+        {
+          "name": "Ler Categorias",
+          "id": "d4515633-57b3-4d5b-a18f-d1f9b5ee0b6c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+
+            ],
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/categorias",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "categorias"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-d4515633-57b3-4d5b-a18f-d1f9b5ee0b6c"
+        },
+        {
+          "name": "Ler Categoria por ID",
+          "id": "ddb15dff-fa8a-4c66-a98b-23bb7ab9b124",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+
+            ],
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/categorias/2",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "categorias",
+                "2"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-ddb15dff-fa8a-4c66-a98b-23bb7ab9b124"
+        },
+        {
+          "name": "Atualizar Categoria",
+          "id": "0606a148-6274-4439-99a3-7cb1f1607341",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Tecnologia Avançada\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/categorias/2",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "categorias",
+                "2"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-0606a148-6274-4439-99a3-7cb1f1607341"
+        },
+        {
+          "name": "Deletar Categoria",
+          "id": "24f4bcd4-eb6b-4b92-8c61-edbffb9c05da",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+
+            ],
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/categorias/2",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "categorias",
+                "2"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-24f4bcd4-eb6b-4b92-8c61-edbffb9c05da"
+        },
+        {
+          "name": "Criar Produto",
+          "id": "2f688d8a-7dab-4c77-828f-1f847d8cc18c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Smartphone X100\", \"descricao\": \"Smartphone com tela de 6.5 polegadas, 128GB de armazenamento.\", \"preco\": 1500.00, \"categoria_id\": 10}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/produtos",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "produtos"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-2f688d8a-7dab-4c77-828f-1f847d8cc18c"
+        },
+        {
+          "name": "Ler Produtos",
+          "id": "ba921ea2-5864-4208-b997-390b30c91f42",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+
+            ],
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/produtos",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "produtos"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-ba921ea2-5864-4208-b997-390b30c91f42"
+        },
+        {
+          "name": "Ler Produto por ID",
+          "id": "314ef05e-d5d2-459a-9bbe-58e972827b6f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+
+            ],
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/produtos/2",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "produtos",
+                "2"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-314ef05e-d5d2-459a-9bbe-58e972827b6f"
+        },
+        {
+          "name": "Atualizar Produto",
+          "id": "2921186c-9fca-49ae-8f91-c68485c7d10d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Smartphone X200\", \"descricao\": \"Smartphone com tela de 6.7 polegadas, 256GB de armazenamento.\", \"preco\": 1800.00, \"categoria_id\": 10}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://teste-motocasystems-backend.test/api/produtos/2",
+              "protocol": "http",
+              "host": [
+                "teste-motocasystems-backend",
+                "test"
+              ],
+              "path": [
+                "api",
+                "produtos",
+                "2"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-2921186c-9fca-49ae-8f91-c68485c7d10d"
+        },
+        {
+          "name": "Deletar Produto",
+          "id": "c2297740-a3d9-46f4-9e02-c3ff9ea57697",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+
+            ],
+            "url": {
+              "raw": "localhost:8000/api/produtos/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "produtos",
+                "1"
+              ]
+            }
+          },
+          "response": [
+
+          ],
+          "uid": "20650708-c2297740-a3d9-46f4-9e02-c3ff9ea57697"
+        }
+      ]
+    }
+  }

@@ -26,24 +26,40 @@ class ProdutoController extends Controller
     // Retorna os detalhes de um produto específico
     public function show($id)
     {
-        $produto = Produto::with('categoria')->findOrFail($id);
+        $produto = Produto::find($id);
+
+        if (!$produto) {
+            return response()->json(['error' => 'Produto não encontrado'], 404);
+        }
+
         return response()->json($produto);
     }
 
     // Atualiza um produto existente
     public function update(ProdutoUpdateRequest $request, $id)
     {
-        $produto = Produto::findOrFail($id);
+        $produto = Produto::find($id);
+
+        if (!$produto) {
+            return response()->json(['error' => 'Produto não encontrado'], 404);
+        }
+
         $produto->update($request->validated());
+
         return response()->json($produto);
     }
 
     // Deleta um produto específico
     public function destroy($id)
     {
-        $produto = Produto::findOrFail($id);
+        $produto = Produto::find($id);
+
+        if (!$produto) {
+            return response()->json(['error' => 'Produto não encontrado'], 404);
+        }
+
         $produto->delete();
 
-        return response()->json(['message' => 'Produto deletado com sucesso.']);
+        return response()->json(['message' => 'Produto deletado com sucesso'], 200);
     }
 }
