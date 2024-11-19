@@ -2,64 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
-use Illuminate\Http\Request;
+use App\Repositories\ProdutoRepository;
 use App\Http\Requests\ProdutoStoreRequest;
 use App\Http\Requests\ProdutoUpdateRequest;
 
 class ProdutoController extends Controller
 {
-    // Retorna uma lista de todos os produtos
+    protected $produtoRepository;
+
+    public function __construct(ProdutoRepository $produtoRepository)
+    {
+        $this->produtoRepository = $produtoRepository;
+    }
+
+    // Retorna todos os produtos
     public function index()
     {
-        $produtos = Produto::with('categoria')->get();
+        $produtos = $this->produtoRepository->all();
         return response()->json($produtos);
     }
 
     // Cria um novo produto
     public function store(ProdutoStoreRequest $request)
     {
-        $produto = Produto::create($request->validated());
+        $produto = $this->produtoRepository->create($request->validated());
         return response()->json($produto, 201);
     }
 
-    // Retorna os detalhes de um produto específico
+    // Retorna um produto específico
     public function show($id)
     {
-        $produto = Produto::find($id);
-
-        if (!$produto) {
-            return response()->json(['error' => 'Produto não encontrado'], 404);
+        $produto = $this->produtoRepository->find($id);
+        if ($produto) {
+            return response()->json($produto);
         }
-
-        return response()->json($produto);
+        return response()->json(['message' => 'Produto não encontrado'], 404);
     }
 
-    // Atualiza um produto existente
+    // Atualiza um produto
     public function update(ProdutoUpdateRequest $request, $id)
     {
-        $produto = Produto::find($id);
-
-        if (!$produto) {
-            return response()->json(['error' => 'Produto não encontrado'], 404);
-        }
-
-        $produto->update($request->validated());
-
+        $produto = $this->produtoRepository->update($id, $request->validated());
         return response()->json($produto);
     }
 
-    // Deleta um produto específico
+    // Deleta um produto
     public function destroy($id)
     {
-        $produto = Produto::find($id);
-
-        if (!$produto) {
-            return response()->json(['error' => 'Produto não encontrado'], 404);
-        }
-
-        $produto->delete();
-
-        return response()->json(['message' => 'Produto deletado com sucesso'], 200);
+        $this->produtoRepository->delete($id);
+        return response()->json(['message' => 'Produto deletado com sucesso']);
     }
 }

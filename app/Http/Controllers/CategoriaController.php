@@ -2,62 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
+use App\Repositories\CategoriaRepository;
 use App\Http\Requests\CategoriaStoreRequest;
 use App\Http\Requests\CategoriaUpdateRequest;
-use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    // Retorna uma lista de todas as categorias
+    protected $categoriaRepository;
+
+    public function __construct(CategoriaRepository $categoriaRepository)
+    {
+        $this->categoriaRepository = $categoriaRepository;
+    }
+
+    // Retorna todas as categorias
     public function index()
     {
-        $categorias = Categoria::with('produtos')->get();
+        $categorias = $this->categoriaRepository->all();
         return response()->json($categorias);
     }
 
     // Cria uma nova categoria
     public function store(CategoriaStoreRequest $request)
     {
-        $categoria = Categoria::create($request->validated());
+        $categoria = $this->categoriaRepository->create($request->validated());
         return response()->json($categoria, 201);
     }
 
-    // Retorna os detalhes de uma categoria específica
+    // Retorna uma categoria específica
     public function show($id)
     {
-        $categoria = Categoria::with('produtos')->find($id);
-
-        if (!$categoria) {
-            return response()->json(['error' => 'Categoria não encontrada'], 404);
+        $categoria = $this->categoriaRepository->find($id);
+        if ($categoria) {
+            return response()->json($categoria);
         }
-
-        return response()->json($categoria);
+        return response()->json(['message' => 'Categoria não encontrada'], 404);
     }
 
-    // Atualiza uma categoria existente
+    // Atualiza uma categoria
     public function update(CategoriaUpdateRequest $request, $id)
     {
-        $categoria = Categoria::find($id);
-
-        if (!$categoria) {
-            return response()->json(['error' => 'Categoria não encontrada'], 404);
-        }
-
-        $categoria->update($request->validated());
+        $categoria = $this->categoriaRepository->update($id, $request->validated());
         return response()->json($categoria);
     }
 
-    // Deleta uma categoria específica
+    // Deleta uma categoria
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
-
-        if (!$categoria) {
-            return response()->json(['error' => 'Categoria não encontrada'], 404);
-        }
-
-        $categoria->delete();
-        return response()->json(['message' => 'Categoria deletada com sucesso.']);
+        $this->categoriaRepository->delete($id);
+        return response()->json(['message' => 'Categoria deletada com sucesso']);
     }
 }
